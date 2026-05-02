@@ -1,17 +1,16 @@
+# This file generates the GitHub Actions matrix.
+# For simple board + shield combinations, add them to the top level board and
+# shield arrays, for more control, add individual board + shield combinations
+# to the `include` property. You can also use the `cmake-args` property to
+# pass flags to the build command and `artifact-name` to assign a name to
+# distinguish build outputs from each other:
+
+board: [ "nice_nano_v2" ]
+shield: [ "tog_ergo_left", "tog_ergo_right" ]
 include:
-  - board: seeeduino_xiao_ble
-    shield: ergonaut_one_s_left
-  - board: seeeduino_xiao_ble
-    shield: ergonaut_one_s_right
-  - board: seeeduino_xiao_ble
-    shield: ergonaut_one_s_left
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: ergonaut_one_s_left_studio
-  - board: seeeduino_xiao_ble
-    shield: ergonaut_one_s_right
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-    artifact-name: ergonaut_one_s_right_studio
-  - board: seeeduino_xiao_ble
-    shield: settings_reset
+  - board: nice_nano_v2
+    shield: tog_ergo_left
+    cmake-args: -DCONFIG_ZMK_USB_LOGGING=y
+    artifact-name: tog_ergo_left_with_logging
+  - board: nice_nano_v2
+    shield: tog_ergo_right
